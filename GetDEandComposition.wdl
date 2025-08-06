@@ -2,8 +2,8 @@ version 1.0
 
 workflow GetDEandComposition {
   input {
-    String inputDir="gs://fc-secure-b42fb9b0-04ed-4260-9c28-aa1274233114/Neur/toShare_BP" ##qs file with Seurat object and 
-    File metaQS="gs://fc-secure-b42fb9b0-04ed-4260-9c28-aa1274233114/Neur/meta.human.qs"
+    File inputDir="gs://fc-secure-b42fb9b0-04ed-4260-9c28-aa1274233114/Neur/toShare_BP.tar.gz" ##qtar.gz with files for BPCells
+    File metaQS="gs://fc-secure-b42fb9b0-04ed-4260-9c28-aa1274233114/Neur/meta.human.qs" ##qs saved meta data
     String mode="DE"
   }
 
@@ -41,13 +41,13 @@ workflow GetDEandComposition {
 
 task GetDEByGuide {
   input {
-    String input_Dir
+    File input_Dir
     File metaQS
   }
 
 #gsutil cp gs://fc-secure-b42fb9b0-04ed-4260-9c28-aa1274233114/RScripts/GetDE.guide.R /app/GetDE.guide.R
   command <<<
-    gsutil cp ~{input_Dir} dirBP
+    tar -xvzf ~{input_Dir} -C dirBP
     Rscript /app/GetDE.guide.R dirBP ~{metaQS}
   >>>
 
@@ -65,12 +65,12 @@ task GetDEByGuide {
 
 task GetDEByGene {
   input {
-    String input_Dir
+    File input_Dir
     File metaQS
   }
     #gsutil cp gs://fc-secure-b42fb9b0-04ed-4260-9c28-aa1274233114/RScripts/GetDE.Gene.R /app/GetDE.Gene.R
   command <<<
-    gsutil cp ~{input_Dir} dirBP
+    tar -xvzf ~{input_Dir} -C dirBP
     Rscript /app/GetDE.Gene.R dirBP ~{metaQS}
   >>>
 
@@ -93,11 +93,7 @@ task GetComposition {
 
     #gsutil cp gs://fc-secure-b42fb9b0-04ed-4260-9c28-aa1274233114/RScripts/TestClusterProportions.R /app/TestClusterProportions.R
   command <<<
-    cat /app/TestClusterProportions.R
     echo $PWD
-    ls /usr/local/lib/R/bin/exec/R
-    ls ~{metaQS}
-    head ~{metaQS}
     Rscript /app/TestClusterProportions.R ~{metaQS}
   >>>
 

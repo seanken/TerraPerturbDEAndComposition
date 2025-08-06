@@ -59,7 +59,7 @@ TestPert<-function(seur=NULL,dat=NULL,meta=NULL,ctrl="NT_1",minCells=100,form=~A
 
 if(!interactive())
 {
-  args <- commandArgs()
+  args <- commandArgs(trailingOnly=T)
   mat <- open_matrix_dir(dir =args[1])
   meta=qread(args[2])
   mat=mat[,meta$Num==1]

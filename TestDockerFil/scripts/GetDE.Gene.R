@@ -63,7 +63,7 @@ RunNebula_pert<-function(seur=NULL,dat=NULL,meta=NULL,form_fixed=~Target+orig.id
 
 if(!interactive())
 {
-  args <- commandArgs()
+  args <- commandArgs(trailingOnly=T)
   mat <- open_matrix_dir(dir =args[1])
   meta=qread(args[2])
   mat=mat[,meta$Num==1]

@@ -87,7 +87,8 @@ GetPerc<-function(seur,cond="Assign",CellType="CT",verbose=T)
 
 if(!interactive())
 {
-  args <- commandArgs()
+  args <- commandArgs(trailingOnly=T)
+  #args <- commandArgs()
   #mat <- open_matrix_dir(dir =args[1])
   meta=qread(args[1])
   #mat=mat[,meta$Num==1]

@@ -1,6 +1,6 @@
 version 1.0
 
-workflow "GetDEandComposition" {
+workflow GetDEandComposition {
   input {
     String inputDir="gs://fc-secure-b42fb9b0-04ed-4260-9c28-aa1274233114/Neur/toShare_BP" ##qs file with Seurat object and 
     File metaQS="gs://fc-secure-b42fb9b0-04ed-4260-9c28-aa1274233114/Neur/meta.human.qs"

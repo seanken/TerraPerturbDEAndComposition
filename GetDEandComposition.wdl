@@ -93,6 +93,9 @@ task GetComposition {
 
     #gsutil cp gs://fc-secure-b42fb9b0-04ed-4260-9c28-aa1274233114/RScripts/TestClusterProportions.R /app/TestClusterProportions.R
   command <<<
+    cat /app/TestClusterProportions.R
+    echo $PWD
+    ls /usr/local/lib/R/bin/exec/R
     Rscript /app/TestClusterProportions.R ~{metaQS}
   >>>
 

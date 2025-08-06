@@ -3,7 +3,7 @@ version: 1.2
 workflows:
   - subclass: WDL
     publish: true
-    primaryDescriptorPath: GetDEandComposition.wdl
+    primaryDescriptorPath: /GetDEandComposition.wdl
     authors:
       - name: Sean Simmons
         email: ssimmons@broadinstitute.org

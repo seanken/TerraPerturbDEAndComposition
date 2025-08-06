@@ -96,6 +96,8 @@ task GetComposition {
     cat /app/TestClusterProportions.R
     echo $PWD
     ls /usr/local/lib/R/bin/exec/R
+    ls ~{metaQS}
+    head ~{metaQS}
     Rscript /app/TestClusterProportions.R ~{metaQS}
   >>>
 

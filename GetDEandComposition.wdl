@@ -50,7 +50,8 @@ task GetDEByGuide {
     echo $PWD
     ls ~{input_Dir}
     head ~{input_Dir}
-    tar -xvzf ~{input_Dir} -C dirBP
+    mkdir dirBP
+    tar -xvzf ~{input_Dir} -C dirBP --strip-components=1
     Rscript /app/GetDE.guide.R dirBP ~{metaQS}
   >>>
 
@@ -73,7 +74,8 @@ task GetDEByGene {
   }
     #gsutil cp gs://fc-secure-b42fb9b0-04ed-4260-9c28-aa1274233114/RScripts/GetDE.Gene.R /app/GetDE.Gene.R
   command <<<
-    tar -xvzf ~{input_Dir} -C dirBP
+    mkdir dirBP
+    tar -xvzf ~{input_Dir} -C dirBP --strip-components=1
     Rscript /app/GetDE.Gene.R dirBP ~{metaQS}
   >>>
 

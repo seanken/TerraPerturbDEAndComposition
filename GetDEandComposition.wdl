@@ -31,9 +31,9 @@ workflow GetDEandComposition {
   }
 
   output{
-    File de_by_guide = GetDEByGuide.de_by_guide
-    File de_by_gene = GetDEByGene.de_by_gene
-    File composition = GetComposition.composition
+    File? de_by_guide = GetDEByGuide.de_by_guide
+    File? de_by_gene = GetDEByGene.de_by_gene
+    File? composition = GetComposition.composition
   }
 
 }

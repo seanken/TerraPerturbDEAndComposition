@@ -47,6 +47,9 @@ task GetDEByGuide {
 
 #gsutil cp gs://fc-secure-b42fb9b0-04ed-4260-9c28-aa1274233114/RScripts/GetDE.guide.R /app/GetDE.guide.R
   command <<<
+    echo $PWD
+    ls ~{input_Dir}
+    head ~{input_Dir}
     tar -xvzf ~{input_Dir} -C dirBP
     Rscript /app/GetDE.guide.R dirBP ~{metaQS}
   >>>

@@ -62,7 +62,7 @@ task GetDEByGuide {
   runtime{
         docker: "seanken/perturbr:latest"
         zones: "us-central1-b"
-        memory: "80G"
+        memory: "40G"
         disks: "local-disk 100 HDD"
   }
 }
@@ -86,7 +86,7 @@ task GetDEByGene {
   runtime{
         docker: "seanken/perturbr:latest"
         zones: "us-central1-b"
-        memory: "80G"
+        memory: "40G"
         disks: "local-disk 100 HDD"
   }
 }
@@ -109,7 +109,7 @@ task GetComposition {
   runtime{
         docker: "seanken/perturbr:latest"
         zones: "us-central1-b"
-        memory: "80G"
+        memory: "40G"
         disks: "local-disk 100 HDD"
   }
 
